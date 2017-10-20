@@ -1,0 +1,50 @@
+/* package whatever; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Ideone
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		String inpStr="aabacbebebe";
+		String opStr="",maxStr="";
+		int maxLen=0;
+		
+		
+		Set<String> uniqueCSet = new HashSet<String>();
+		int k=3;
+		for (int i=0;i<inpStr.length();i++)
+		{
+			System.out.println(inpStr.charAt(i));
+				uniqueCSet.add(inpStr.charAt(i)+"");
+				if(uniqueCSet.size()<=k)
+				{
+					opStr+=inpStr.charAt(i)+"";
+				}
+				else
+				{
+					if(maxLen<opStr.length())
+					{
+						maxLen=opStr.length();
+						maxStr=opStr;
+					}
+					uniqueCSet.remove(opStr.charAt(0)+"");
+					opStr=opStr.substring(opStr.lastIndexOf(opStr.charAt(0)),opStr.length());
+				}
+				
+		
+		}
+		
+		if(maxLen>opStr.length())
+		{
+			System.out.println(maxStr);
+			
+		}
+		else
+			System.out.println(opStr);
+
+	}
+}
