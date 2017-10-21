@@ -1,0 +1,44 @@
+/* package whatever; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Ideone
+{
+	
+	static int count(int[] E,int[] A,int i, int k)
+	{
+		int cnt=0;
+		for(int j=0;j<E.length/2;j++)
+		{
+			if(i==E[2*(j)] && A[E[(2*j)+1]-1]==k)
+			{
+				cnt++;
+				cnt+=count(E,A,E[(2*j)+1],k);
+			}
+		}
+		return cnt;
+	}
+	
+	
+	
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		int A[]={2,1,1,1,1};
+		int[] E={1,2,1,3,2,4,2,5};
+		int max=0,currCount;
+		for(int i=0;i<A.length;i++)
+		{
+			currCount=count(E,A,i+1,A[i]);
+			if(currCount>max)
+			{
+				max=currCount;
+			}
+		}
+		System.out.println(max);
+		
+	
+	}
+}
