@@ -13,6 +13,8 @@ class Ideone
 		int cnt=0;
 		for(int j=0;j<E.length/2;j++)
 		{
+		
+		//Check for same label and path exists 
 			if(i==E[2*(j)] && A[E[(2*j)+1]-1]==k)
 			{
 				cnt++;
