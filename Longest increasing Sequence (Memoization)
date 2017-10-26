@@ -1,0 +1,47 @@
+/* package whatever; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Ideone
+{
+	static Map<Integer,Integer> dp=new HashMap<Integer,Integer>();
+	public static int LIS(int[] arr, int i)
+	{
+		if(dp.get(i)!=null)
+			return dp.get(i);
+		int len=1;
+		
+		for(int j=i;j <arr.length-1;j++)
+		{
+			
+			if(arr[j]<arr[j+1])
+				{
+					
+					len+=LIS(arr,j+1);
+					break;
+				}
+				
+		}
+		
+		dp.put(new Integer(i),new Integer(len));
+		return len;
+	}
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		int max=0,currMax=0;
+		 int arr[] = { 30, 22, 9, 20, 21, 50, 41, 60 };
+		// your code goes here
+		for(int i=0;i<arr.length;i++)
+		{
+		
+			currMax=LIS(arr,i);
+			if(max<currMax)
+				max=currMax;
+			
+		}
+		System.out.println(max);
+	}
+}
